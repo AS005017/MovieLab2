@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovieLab2</string>
+    <string name="description">Описание</string>
+    <string name="popular_name">Популярные фильмы</string>
+    <string name="translation_n_available">Перевод описания не доступен</string>
+    <string name="release_date">Дата выхода: </string>
+    <string name="artists">Актёры</string>
+    <string name="trailers">Трейлеры</string>
+    <string name="trailers_n_available">Трейлеры не доступны</string>
+    <string name="favorite_name">Избранные фильмы</string>
+    <string name="casts_n_available">Список актёров не доступен</string>
+</resources>

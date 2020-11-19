@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MovieLab2</string>
+    <string name="description">Description</string>
+    <string name="popular_name">Best Popular Films</string>
+    <string name="translation_n_available">Translation of the overview is not available</string>
+    <string name="release_date">Release date: </string>
+    <string name="artists">Artists</string>
+    <string name="trailers">Trailers</string>
+    <string name="trailers_n_available">Trailers are not available</string>
+    <string name="favorite_name">Favorite movies</string>
+    <string name="casts_n_available">List of casts are not available</string>
+</resources>
