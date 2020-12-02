@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.labs.movielab2.BuildConfig;
@@ -56,7 +57,7 @@ import io.reactivex.schedulers.Schedulers;
 public class DetailFragment extends Fragment implements TrailerItemClickListener {
 
     private static final String TAG = "myLogs";
-    private ImageView moviePoster, movieBackgroung, movieAdult;
+    private ImageView moviePoster, movieBackgroung, movieAdult, backDetail;
     private TextView movieTitle, movieOverview, movieRate, movieDate, movieGenres, movieTrailerNone, movieCastsNone;
     private List<Cast> castList;
     private CreditsResponse creditsResponses;
@@ -83,6 +84,7 @@ public class DetailFragment extends Fragment implements TrailerItemClickListener
             initENgenres();
 
         View view = inflater.inflate(R.layout.activity_movie_detail, container, false);
+        backDetail = view.findViewById(R.id.back_detail);
         movieAdult = view.findViewById(R.id.detail_movie_adult);
         movieOverview = view.findViewById(R.id.detail_movie_desc);
         movieTitle = view.findViewById(R.id.detail_movie_title);
@@ -110,6 +112,12 @@ public class DetailFragment extends Fragment implements TrailerItemClickListener
     }
 
     void iniViews() {
+            backDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().onBackPressed();
+                }
+            });
             StringBuilder genres = new StringBuilder();
             movieId = movie.getId();
             String movieTitle = movie.getTitle();
@@ -266,11 +274,13 @@ public class DetailFragment extends Fragment implements TrailerItemClickListener
                                                     db.getMovieDao().delete(ourMovie);
                                                     fab.setImageResource(R.drawable.ic_baseline_favorite_24);
                                                     containFilm = false;
+                                                    Snackbar.make(getActivity().findViewById(android.R.id.content),getActivity().getResources().getString(R.string.deleting_success), Snackbar.LENGTH_LONG).show();
                                                 }
                                                 else {
                                                     containFilm = true;
                                                     db.getMovieDao().insertAll(ourMovie);
                                                     fab.setImageResource(R.drawable.ic_baseline_favorite_red);
+                                                    Snackbar.make(getActivity().findViewById(android.R.id.content),getActivity().getResources().getString(R.string.adding_success), Snackbar.LENGTH_LONG).show();
                                                 }
                                                 } else
                                                     Toast.makeText(getContext(), "Try again later", Toast.LENGTH_SHORT).show();

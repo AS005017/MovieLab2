@@ -9,4 +9,7 @@
     <string name="trailers_n_available">Trailers are not available</string>
     <string name="favorite_name">Favorite movies</string>
     <string name="casts_n_available">List of casts are not available</string>
+    <string name="favorites_output">Favorites is nothing contain yet</string>
+    <string name="adding_success">Movie was successfully added to favorites</string>
+    <string name="deleting_success">Movie was successfully removed from favorites</string>
 </resources>

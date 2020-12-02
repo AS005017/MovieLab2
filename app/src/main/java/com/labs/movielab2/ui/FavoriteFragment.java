@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,8 @@ import io.reactivex.functions.Consumer;
 public class FavoriteFragment extends Fragment implements FavoriteMovieClickListener {
 
     private RecyclerView slider_favorite;
+    private TextView favorites_out;
+    private ImageView back_favorite;
     private List<MovieDetail> ourMovie;
 
     public static Fragment newInstance() {
@@ -45,6 +48,14 @@ public class FavoriteFragment extends Fragment implements FavoriteMovieClickList
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         slider_favorite = view.findViewById(R.id.rv_favorites);
+        favorites_out = view.findViewById(R.id.favorites_movie_out);
+        back_favorite = view.findViewById(R.id.back_favorite);
+        back_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     @SuppressLint("CheckResult")
@@ -60,6 +71,11 @@ public class FavoriteFragment extends Fragment implements FavoriteMovieClickList
                     @Override
                     public void accept(List<MovieDetail> movies) {
                         ourMovie = movies;
+                        if (ourMovie.size() == 0) {
+                            favorites_out.setVisibility(View.VISIBLE);
+                        } else {
+                            favorites_out.setVisibility(View.INVISIBLE);
+                        }
                         slider_favorite.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                         slider_favorite.setAdapter(new FavoritesAdapter(getContext(), ourMovie, FavoriteFragment.this));
                     }

@@ -10,4 +10,7 @@
     <string name="trailers_n_available">Трейлеры не доступны</string>
     <string name="favorite_name">Избранные фильмы</string>
     <string name="casts_n_available">Список актёров не доступен</string>
+    <string name="favorites_output">В избранном пока ничего нет</string>
+    <string name="adding_success">Фильм успешно добавлен в избранное</string>
+    <string name="deleting_success">Фильм успешно убран из избранного</string>
 </resources>

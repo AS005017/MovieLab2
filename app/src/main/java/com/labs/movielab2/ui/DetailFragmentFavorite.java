@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.labs.movielab2.R;
@@ -50,7 +51,7 @@ public class DetailFragmentFavorite extends Fragment implements TrailerItemClick
 
     private static final String TAG = "myLogs";
     private MovieDetail movie;
-    private ImageView moviePoster, movieBackgroung, movieAdult;
+    private ImageView moviePoster, movieBackgroung, movieAdult, backDetail;
     private TextView movieTitle, movieOverview, movieRate, movieDate, movieGenres, movieTrailerNone, movieCastsNone;
     private FloatingActionButton fab;
     private ArrayList<Genres> newGenres;
@@ -68,6 +69,7 @@ public class DetailFragmentFavorite extends Fragment implements TrailerItemClick
         String movieStringRecvFromFrag = getArguments().getString("Movie");
         movie = new Gson().fromJson(movieStringRecvFromFrag,movieType);
         View view = inflater.inflate(R.layout.activity_movie_detail, container, false);
+        backDetail = view.findViewById(R.id.back_detail);
         movieAdult = view.findViewById(R.id.detail_movie_adult);
         movieOverview = view.findViewById(R.id.detail_movie_desc);
         movieTitle = view.findViewById(R.id.detail_movie_title);
@@ -88,6 +90,12 @@ public class DetailFragmentFavorite extends Fragment implements TrailerItemClick
     }
 
     void initViews() {
+        backDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
         StringBuilder genres = new StringBuilder();
         int movieId = movie.getId();
         String movie_Title = movie.getTitle();
@@ -193,11 +201,13 @@ public class DetailFragmentFavorite extends Fragment implements TrailerItemClick
                                     db.getMovieDao().delete(movie);
                                     fab.setImageResource(R.drawable.ic_baseline_favorite_24);
                                     containFilm = false;
+                                    Snackbar.make(getActivity().findViewById(android.R.id.content),getActivity().getResources().getString(R.string.deleting_success), Snackbar.LENGTH_LONG).show();
                                 }
                                 else {
                                     containFilm = true;
                                     db.getMovieDao().insertAll(movie);
                                     fab.setImageResource(R.drawable.ic_baseline_favorite_red);
+                                    Snackbar.make(getActivity().findViewById(android.R.id.content),getActivity().getResources().getString(R.string.adding_success), Snackbar.LENGTH_LONG).show();
                                 }
                             }
 
