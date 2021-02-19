@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SliderPagerAdapter extends PagerAdapter {
 
-    MovieItemClickListener movieItemClickListener;
+    private MovieItemClickListener movieItemClickListener;
     private Context mContext ;
     private List<Movie> mList ;
 

@@ -16,9 +16,9 @@ import java.util.List;
 
 public class TrailerAdapter extends RecyclerView.Adapter <TrailerAdapter.MyViewHolder> {
 
-    TrailerItemClickListener trailerItemClickListener;
-    Context context ;
-    List<Trailer> mList;
+    private TrailerItemClickListener trailerItemClickListener;
+    private Context context ;
+    private List<Trailer> mList;
 
     public TrailerAdapter(Context context, List<Trailer> mList, TrailerItemClickListener trailerItemClickListener) {
         this.trailerItemClickListener = trailerItemClickListener;

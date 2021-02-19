@@ -18,9 +18,9 @@ import java.util.List;
 
 public class FavoritesAdapter  extends RecyclerView.Adapter<FavoritesAdapter.MyNewViewHolder> {
 
-    Context context ;
-    List<MovieDetail> mList;
-    FavoriteMovieClickListener movieItemClickListener;
+    private Context context ;
+    private List<MovieDetail> mList;
+    private FavoriteMovieClickListener movieItemClickListener;
 
 
     public FavoritesAdapter(Context context, List<MovieDetail> mList, FavoriteMovieClickListener movieItemClickListener) {

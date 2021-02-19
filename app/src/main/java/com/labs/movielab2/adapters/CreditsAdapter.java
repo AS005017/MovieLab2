@@ -18,8 +18,8 @@ import java.util.List;
 
 public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.MyViewHolder> {
 
-    Context context ;
-    List<Cast> mList;
+    private Context context ;
+    private List<Cast> mList;
 
     public CreditsAdapter(Context context, List<Cast> mList) {
         this.context = context;

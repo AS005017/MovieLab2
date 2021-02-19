@@ -181,7 +181,7 @@ public class Movie {
     }
 
 }*/
-    @SerializedName("poster_path") // это моя модель по которой я из json как бы вылавливаю данные по ключам
+    @SerializedName("poster_path")
     private String posterPath;
     @SerializedName("adult")
     private boolean adult;

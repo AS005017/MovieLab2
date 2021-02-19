@@ -10,7 +10,7 @@ import io.reactivex.plugins.RxJavaPlugins;
 
 public class App extends Application {
     private static final String TAG = "myLogs";
-    public static App instance;
+    private  static App instance;
     private AppDatabase database;
 
     public static App getInstance() {
